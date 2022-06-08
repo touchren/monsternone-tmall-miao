@@ -154,6 +154,27 @@ function getCoin() {
 
 // 打开抽奖页
 function openPage() {
+    let continueTravelBtn = textMatches("(继续环游|立即抽奖|开心收下).*").findOne(1000);
+    if (continueTravelBtn) {
+    continueTravelBtn
+        .parent()
+        .find(
+        clickable(true)
+            .className("android.view.View")
+            .boundsInside(
+            continueTravelBtn.bounds().right,
+            200,
+            device.width + 100,
+            device.height / 3
+            )
+        )
+        .forEach((item, index) => {
+        //log(item);
+        item.click();
+        log("关闭弹窗[%s]",continueTravelBtn.text());
+        sleep(1000);
+        });
+    }
     // Android 8 的 去使用奖励 后面带了1个空格 , [去使用奖励 ]
     let anchor = className('android.view.View').filter(function (w) {
         return w.clickable() && (w.text().indexOf('去使用奖励')!=-1 || w.desc() == '去使用奖励')
@@ -439,27 +460,25 @@ function openBox() {
         //     .text()
         //     .indexOf("已放入我的") != -1
         // ) {
+        log("关闭[%s]对应的弹窗",title.text())
         sleep(2000)
         if(title.text().indexOf("恭喜")!=-1){
-            text("")
+            title.parent() && title.parent().parent()
+                .find(text("")
                 .clickable()
                 .className("android.view.View")
                 .boundsInside(
                 title.bounds().right,
-                title.bounds().top - 300,
-                device.width - 1,
+                title.bounds().top - 500,
+                device.width +100,
                 title.bounds().top
-                )
-                .find()
+                ))
                 .forEach((item, index) => {
-                // log(item);
+                //log(item);
                 // log(item.depth());
                 // log(item.indexInParent());
                 item.click();
                 });
-        // } else {
-        //   title.child(title.childCount() - 2).click();
-        // }
         }else{
             
             text("").clickable().className("android.view.View")

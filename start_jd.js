@@ -165,7 +165,7 @@ function getCoin() {
 // 打开任务列表
 function openTaskList() {
     // 关闭 [欢迎回来] [继续环游] 的弹框
-    let continueTravelBtn = textMatches("(继续环游|立即抽奖).*").findOne(1000);
+    let continueTravelBtn = textMatches("(继续环游|立即抽奖|开心收下|开启今日抽奖).*").findOne(1000);
     if (continueTravelBtn) {
     continueTravelBtn
         .parent()
