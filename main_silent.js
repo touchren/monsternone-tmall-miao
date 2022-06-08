@@ -1,4 +1,4 @@
-// require("./Unlock.js").exec();
+require("./Unlock.js").exec();
 
 // let util = require("utils.js");
 
@@ -14,11 +14,13 @@ events.on("exit", function () {
 });
 
 setInterval(function () {}, 1000);
-
+// 60分钟
 let limitTime = 60 * 60 * 1000;
 
 while (1) {
   if (filePathList.length > 0) {
+    // 先关闭日志悬浮窗
+    press(635, 145, 50);
     let e = engines.execScriptFile(filePathList[0]);
     while (!e.getEngine()); //等待脚本运行
     let currentScriptEngine = e.getEngine();
@@ -50,5 +52,11 @@ while (1) {
   } else {
     engines.myEngine().forceStop();
   }
+  press(635, 145, 50);
+  sleep(3000);
   filePathList.shift();
 }
+sleep(3000);
+home();
+// 锁屏 Android
+auto.service.performGlobalAction(8);

@@ -1,7 +1,7 @@
 const VERSION = '2022618-18'
 
 // 达到多少次没有抽奖资格就认为今天的任务已经完成了
-const MAX_NO_REWARD_TIMES = 10;
+const MAX_NO_REWARD_TIMES = 5;
 // 连续没有抽奖资格的次数
 var continueNoRewardTimes = 0;
 
@@ -138,7 +138,7 @@ function getCoin() {
     //         return false
     //     }
     } else {
-        let coins = anchor.parent().find(textMatches(/\d{4,}/)); // Android 8 适配
+        let coins = anchor.parent().find(textMatches(/\d{4,}/)); // Android 9 适配
         if(coins.size()>0){
           coin = coins.get(0).text()
           if(coin){
@@ -192,7 +192,7 @@ function openPage() {
         sign.child(0).child(0).click() // child才可以点
     }
 
-    if(!sign.child(0).child(0).clickable() || !text('剩余抽奖次数').findOne(8000)){
+    if(!sign.child(0).child(0).clickable() || !text('剩余抽奖次数').findOne(4000)){
         log("使用方式二打开抽奖页面")
         click(sign.bounds().centerX(),sign.bounds().centerY());
     }
