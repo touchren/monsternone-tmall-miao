@@ -145,7 +145,7 @@ function getCoin() {
           if(coin){
             return parseInt(coin)
         } else {
-            let coins = anchor.parent().find(textMatches(/\d{3,}/).indexInParent(1)); // Android 8 适配
+            let coins = anchor.parent().find(textMatches(/\d{3,}/).indexInParent(1)); // Android 9 适配
             if (coins.size() > 0) {
                 coin = coins.get(0).text()
                 if (coin) {
@@ -183,7 +183,7 @@ function openPage() {
         sleep(1000);
         });
     }
-    // Android 8 的 去使用奖励 后面带了1个空格 , [去使用奖励 ]
+    // Android 9 的 去使用奖励 后面带了1个空格 , [去使用奖励 ]
     let anchor = className('android.view.View').filter(function (w) {
         if (w.clickable() && ((w.text() && w.text().match(/去使用奖励/)) || (w.desc() && w.desc().match(/去使用奖励/)))) {
             return true
@@ -254,7 +254,7 @@ function findTasks() {
     if (anchor.child(1).clickable()) {
         anchor.child(1).click()
     } else {
-        anchor.child(2).click() // 京东11.0.4 Android 8 适配
+        anchor.child(2).click() // 京东11.0.4 Android 9 适配
     }
     sleep(5000)
     let go = text('去完成').findOnce()
@@ -474,7 +474,7 @@ function openBox() {
         if(device.sdkInt!=28){ // 不是 Android8
             box[i].click()
         }else{
-            // Android 8 下面 大概率.click()无效, 使用模拟点击
+            // Android 9 下面 大概率.click()无效, 使用模拟点击
             click(box[i].bounds().centerX(),box[i].bounds().centerY())
         }
         console.log('检测弹窗') 

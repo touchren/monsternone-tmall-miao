@@ -52,7 +52,7 @@ while (1) {
   } else {
     // 所有任务结束后关闭日志悬浮窗
     closeLogFloat();
-    // 锁屏 Android
+    // 锁屏 Android 9 以上支持
     auto.service.performGlobalAction(8);
     sleep(1000);
     log("test log1");    
