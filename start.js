@@ -305,11 +305,16 @@ try {
         } else if (jumpButton[0].match(/.*施肥.*/)) {
             console.log('进行' + jumpButton[0] + '任务')
             jumpButton[1].click()
-            sleep(5000);
+            sleep(3000);
+            click(850,1480); // 收集肥料
+            sleep(2000);
             depth(13).text("图片").findOnce() && (shifei = depth(13).text("图片").findOnce().parent()) && click(shifei.bounds().centerX(),shifei.bounds().centerY());
             sleep(2000);
-            back();
-            sleep(2000);
+            let i = 0;
+            while (!text("已签到").exists() && i++<3) {
+                back();
+                sleep(2000);
+            }
         } else if (jumpButton[0].match(/.*淘金币.*/)) {
             console.log('进行' + jumpButton[0] + '任务')
             jumpButton[1].click()
@@ -323,8 +328,11 @@ try {
             let returnCoinBtn = text("购物返").findOne(1000);
             returnCoinBtn && click(returnCoinBtn.bounds().centerX(),returnCoinBtn.bounds().centerY()) && sleep(5000);
             console.show();
-            back();
-            sleep(2000);
+            let i = 0;
+            while (!text("已签到").exists() && i++<3) {
+                back();
+                sleep(2000);
+            }
         } else if (jumpButton[0].match(/领现金/)) {
             console.log('进行' + jumpButton[0] + '任务')
             jumpButton[1].click()
