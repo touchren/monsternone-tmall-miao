@@ -141,20 +141,21 @@ function getCoin() {
     } else {
         let coins = anchor.parent().find(textMatches(/\d{4,}/)); // Android 9 适配
         if(coins.size()>0){
-          coin = coins.get(0).text()
-          if(coin){
-            return parseInt(coin)
-        } else {
-            let coins = anchor.parent().find(textMatches(/\d{3,}/).indexInParent(1)); // Android 9 适配
-            if (coins.size() > 0) {
-                coin = coins.get(0).text()
-                if (coin) {
-                    return parseInt(coin)
+            coin = coins.get(0).text()
+            if(coin){
+                return parseInt(coin)
+            } else {
+                let coins = anchor.parent().find(textMatches(/\d{3,}/).indexInParent(1)); // Android 9 适配
+                if (coins.size() > 0) {
+                    coin = coins.get(0).text()
+                    if (coin) {
+                        return parseInt(coin)
+                    } else {
+                        return false
+                    }
                 } else {
                     return false
                 }
-            } else {
-                return false
             }
         }
     }
