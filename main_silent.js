@@ -10,7 +10,7 @@ filePathList = filePathList.map(function (filePath) {
 });
 
 events.on("exit", function () {
-  log("所有任务执行完毕, 退出主进程");
+  toastLog("所有任务执行完毕, 退出主进程");
 });
 
 setInterval(function () {}, 1000);
@@ -55,14 +55,16 @@ while (1) {
     // 锁屏 Android
     auto.service.performGlobalAction(8);
     sleep(1000);
+    log("test log1");    
     engines.myEngine().forceStop();
+    log("test log2");
   }
+  filePathList.shift();
 }
 
 function closeLogFloat() {
   home();
   sleep(2000);
   press(635, 145, 50);
-  sleep(1000);
-  filePathList.shift();
+  sleep(1000);  
 }
