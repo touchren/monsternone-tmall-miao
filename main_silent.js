@@ -19,8 +19,8 @@ let limitTime = 60 * 60 * 1000;
 
 while (1) {
   if (filePathList.length > 0) {
-    // 先关闭日志悬浮窗
-    press(635, 145, 50);
+    // 开始任务前先关闭日志悬浮窗
+    closeLogFloat();
     let e = engines.execScriptFile(filePathList[0]);
     while (!e.getEngine()); //等待脚本运行
     let currentScriptEngine = e.getEngine();
@@ -50,13 +50,19 @@ while (1) {
       }
     }
   } else {
+    // 所有任务结束后关闭日志悬浮窗
+    closeLogFloat();
+    // 锁屏 Android
+    auto.service.performGlobalAction(8);
+    sleep(1000);
     engines.myEngine().forceStop();
   }
+}
+
+function closeLogFloat() {
+  home();
+  sleep(2000);
   press(635, 145, 50);
-  sleep(3000);
+  sleep(1000);
   filePathList.shift();
 }
-sleep(3000);
-home();
-// 锁屏 Android
-auto.service.performGlobalAction(8);
