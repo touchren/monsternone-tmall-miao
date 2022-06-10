@@ -216,7 +216,7 @@ function openPage() {
         click(sign.bounds().centerX(), sign.bounds().centerY());
     }
 
-    if(!text('剩余抽奖次数').findOne(8000)){
+    if(!text('剩余抽奖次数').findOne(4000)){
         log("使用方式二打开抽奖页面")
         click(sign.bounds().centerX(),sign.bounds().centerY());
     }
@@ -470,7 +470,24 @@ function openBox() {
     console.log('进行抽奖，由于无法判断是否已经开盒，所以每个盒子都点一遍')
     continueNoRewardTimes = 0;
     let box = anchor.parent().parent().children()
-    for (let i = 0; i < 6; i++) {
+    let i = 0;
+    box.forEach((item, index) => {  
+        // 找 小手
+        let handBtn = textMatches("开好礼")
+          .boundsInside(
+            item.bounds().left + 1,
+            item.bounds().top + item.bounds().height() * 0.5,
+            item.bounds().left + item.bounds().width() * 1.5,
+            item.bounds().top + item.bounds().height() * 1.5
+          )
+          .findOnce();
+        if(handBtn){
+            log("第%s个盒子开始没有开过",(index+1));
+            i = index;
+            return true;
+        }
+      });
+    for (i; i < 6; i++) {
         console.log('打开第' + (i+1) + '个盒子')
         if(device.sdkInt!=28){ // 不是 Android8
             box[i].click()
