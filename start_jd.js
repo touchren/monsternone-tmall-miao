@@ -115,6 +115,7 @@ function openAndInto() {
         console.log('可能未安装京东App')
     }
 
+    text("首页").findOne(3000); // 程序后台如果被杀死的情况下, 2s不能进入app
     sleep(2000)
     console.log('进入活动页面')
 
