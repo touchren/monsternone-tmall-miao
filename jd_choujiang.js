@@ -409,8 +409,7 @@ function cartTask() {
         } catch (e) {
             console.error(e);
             console.log('加购失败')
-            back();
-            return false
+            break;
         }
         sleep(2000)
     }
@@ -455,7 +454,7 @@ function doTask(task) {
 // 抽奖
 function openBox() {
     console.log('关闭任务列表')
-    textContains('签到').findOne(5000).parent().parent().child(1).click()
+    textContains('签到').findOne(5000) && textContains('签到').findOne(5000).parent().parent().child(1).click()
     let anchor = text('剩余抽奖次数').findOne(8000)
     if (!anchor) {
         console.log('未能找到抽奖提示')
