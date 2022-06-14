@@ -331,7 +331,7 @@ try {
             let i = 0;
             while (!text("已签到").exists() && i++<3) {
                 back();
-                sleep(2000);
+                sleep(5000);
             }
         } else if (jumpButton[0].match(/领现金/)) {
             console.log('进行' + jumpButton[0] + '任务')
