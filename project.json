@@ -2,7 +2,7 @@
   "name": "618(2022版)",
   "main": "main_silent.js",
   "packageName": "com.example",
-  "versionName": "22.06.15-2",
+  "versionName": "2022618-20-01",
   "versionCode": 1,
-  "log": "增加项目文件,用于更新"
+  "log": "合并上游修改"
 }
