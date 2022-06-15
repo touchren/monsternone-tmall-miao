@@ -108,6 +108,7 @@ function checkUpdate() {
 function isUpdated() {
   let newProject = getProjectConfig();
   if (newProject.versionName != project.versionName) {
+    log("新版本信息: ", newProject);
     return true;
   } else {
     return false;
