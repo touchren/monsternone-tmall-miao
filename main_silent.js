@@ -1,6 +1,13 @@
 require("./Unlock.js").exec();
 
-// let util = require("utils.js");
+let uitlsPath = "../meituanmaicai/Utils.js"; //"./Utils.js"
+let { getProjectConfig, globalLogConfig, hasUpdate } = require(uitlsPath);
+
+globalLogConfig();
+
+let PROJECT_NAME = "monsternone-tmall-miao";
+
+let project = getProjectConfig();
 
 // 在此处给脚本排队即可
 let filePathList = ["start.js", "start_jd.js", "jd_choujiang.js"];
@@ -55,7 +62,7 @@ while (1) {
     // 锁屏 Android 9 以上支持
     auto.service.performGlobalAction(8);
     sleep(1000);
-    log("test log1");    
+    log("test log1");
     engines.myEngine().forceStop();
     log("test log2");
   }
@@ -66,5 +73,40 @@ function closeLogFloat() {
   home();
   sleep(2000);
   press(635, 145, 50);
-  sleep(1000);  
+  sleep(1000);
+}
+
+function checkUpdate() {
+  let folder = engines.myEngine().cwd() + "/";
+  console.log("脚本所在路径: ", folder);
+  try {
+    let res = hasUpdate("/touchren/" + PROJECT_NAME, "silent", "project.json");
+    if (res) {
+      updateByGit(PROJECT_NAME);
+      let count = 3;
+      while (!isUpdated() && count-- > 0) {
+        toastLog("更新还未完成, 请稍等");
+        sleep(10000);
+      }
+      if (isUpdated()) {
+        toastLog("更新成功, 建议重新运行程序");
+      } else {
+        toastLog("更新失败, 请稍后重试");
+      }
+    }
+  } catch (err) {
+    toast("检查更新出错，请手动前往项目地址查看");
+    console.error(err);
+    console.error(err.stack);
+    return;
+  }
+}
+
+function isUpdated() {
+  let newProject = getProjectConfig();
+  if (newProject.versionName != project.versionName) {
+    return true;
+  } else {
+    return false;
+  }
 }
