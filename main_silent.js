@@ -1,6 +1,7 @@
 require("./Unlock.js").exec();
 
 let uitlsPath = "../meituanmaicai/Utils.js"; //"./Utils.js"
+
 let { getProjectConfig, globalLogConfig, hasUpdate } = require(uitlsPath);
 
 globalLogConfig();
@@ -23,6 +24,8 @@ events.on("exit", function () {
 setInterval(function () {}, 1000);
 // 60分钟
 let limitTime = 60 * 60 * 1000;
+
+checkUpdate();
 
 while (1) {
   if (filePathList.length > 0) {
