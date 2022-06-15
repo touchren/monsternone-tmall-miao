@@ -2,7 +2,7 @@ require("./Unlock.js").exec();
 
 let uitlsPath = "../meituanmaicai/Utils.js"; //"./Utils.js"
 
-let { getProjectConfig, globalLogConfig, hasUpdate } = require(uitlsPath);
+let { getProjectConfig, globalLogConfig, hasUpdate ,updateByGit } = require(uitlsPath);
 
 globalLogConfig();
 
