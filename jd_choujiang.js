@@ -1,4 +1,4 @@
-const VERSION = '2022618-20'
+const VERSION = '2022618-21'
 
 // 达到多少次没有抽奖资格就认为今天的任务已经完成了
 const MAX_NO_REWARD_TIMES = 5;

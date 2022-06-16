@@ -1,4 +1,4 @@
-const VERSION = '2022618-20'
+const VERSION = '2022618-21'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
@@ -258,7 +258,7 @@ function getTaskByText() {
         for (let i = 0; i < taskButtons.length; i++) {
             let item = taskButtons[i]
             tTitle = item.parent().child(1).text()
-            let r = tTitle.match(/(\d)\/(\d*)/)
+            let r = tTitle.match(/(\d*)\/(\d*)/)
             if (!r) continue
 
             tCount = (r[2] - r[1])
