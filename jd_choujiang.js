@@ -435,6 +435,11 @@ function doTask(task) {
     let tTitle = task[0]
     let tButton = task[1]
     console.log('进行', tTitle)
+    if(tButton.bounds().height()<50){ // 针对不在屏幕里面的按钮上滑显示出来, 正常高度是90
+        swipe(650,1680,680,1500,235);
+        sleep(3000); // 等待加购的图标重新渲染
+        tButton = text(tButton.text()).indexInParent(tButton.indexInParent()).findOnce();
+    }
     tButton.clickable()||tButton.bounds().height()<50?tButton.click():click(tButton.bounds().centerX(),tButton.bounds().centerY())
     if (tTitle.match(/签到/)) {
         console.log('签到完成')

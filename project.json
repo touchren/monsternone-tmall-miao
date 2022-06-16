@@ -2,7 +2,7 @@
   "name": "618(2022版)",
   "main": "main_silent.js",
   "packageName": "com.example",
-  "versionName": "2022618-20-04",
+  "versionName": "2022618-21-01",
   "versionCode": 1,
-  "log": "停用淘宝任务"
+  "log": "兼容加购逻辑"
 }
