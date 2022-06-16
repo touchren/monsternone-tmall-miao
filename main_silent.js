@@ -11,7 +11,8 @@ let PROJECT_NAME = "monsternone-tmall-miao";
 let project = getProjectConfig();
 
 // 在此处给脚本排队即可
-let filePathList = ["start.js", "start_jd.js", "jd_choujiang.js"];
+// "start.js", 
+let filePathList = ["start_jd.js", "jd_choujiang.js"];
 
 filePathList = filePathList.map(function (filePath) {
   return files.path(filePath);
