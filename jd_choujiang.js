@@ -329,9 +329,17 @@ function joinTask() {
 
         // text("instruction_icon") 全局其实都只有一个, 保险起见, 使用两个parent来限定范围
         let checks = check.parent().parent().find(text("instruction_icon"));
+        
         if (checks.size() > 0) {
             // 解决部分店铺(欧莱雅)开卡无法勾选 [确认授权] 的问题           
             check = checks.get(0);
+        } else if(checkBtn = boundsInside(
+            0,
+            check.bounds().top - 20,
+            check.bounds().left - 1,
+            check.bounds().bottom + 20
+          ).findOnce()){
+            check=checkBtn;
         } else {
             if (check.indexInParent() == 6) {
                 check = check.parent().child(5)
@@ -391,7 +399,8 @@ function joinTask() {
 // 加购任务
 function cartTask() {
     console.log('查找商品')
-    let anchor = textMatches(/\(\d\/2\)/).findOne(10000)
+    sleep(2000);
+    let anchor = textMatches(/\(\d\/2\)/).indexInParent(0).findOne(10000)
     if (!anchor) {
         console.log('未能找到加购提示')
         return false
@@ -440,7 +449,9 @@ function doTask(task) {
         sleep(3000); // 等待加购的图标重新渲染
         tButton = text(tButton.text()).indexInParent(tButton.indexInParent()).findOnce();
     }
-    tButton.clickable()||tButton.bounds().height()<50?tButton.click():click(tButton.bounds().centerX(),tButton.bounds().centerY())
+    tButton.clickable() || tButton.bounds().height() < 50
+        ? tButton.click()
+        : click(tButton.bounds().centerX(), tButton.bounds().centerY());
     if (tTitle.match(/签到/)) {
         console.log('签到完成')
         return true
@@ -459,6 +470,8 @@ function doTask(task) {
 // 抽奖
 function openBox() {
     console.log('关闭任务列表')
+    swipe(680,1500,650,1680,235);
+    sleep(3000); // 等待加购的图标重新渲染
     textContains('签到').findOne(5000) && textContains('签到').findOne(5000).parent().parent().child(1).click()
     let anchor = text('剩余抽奖次数').findOne(8000)
     if (!anchor) {
