@@ -2,7 +2,7 @@
   "name": "618(2022版)",
   "main": "main_silent.js",
   "packageName": "com.example",
-  "versionName": "2022618-21-02",
+  "versionName": "2022618-21-03",
   "versionCode": 1,
-  "log": "兼容加购逻辑"
+  "log": "屏蔽玩游戏任务"
 }

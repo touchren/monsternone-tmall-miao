@@ -268,6 +268,7 @@ function getTaskByText() {
                 tText = item.text()
                 if (!autoJoin && tText.match(/成功入会/)) continue
                 if (tText.match(/下单/)) continue
+                if (tTitle.match(/玩游戏/)) continue
                 tButton = item.parent().child(3)
                 break
             }

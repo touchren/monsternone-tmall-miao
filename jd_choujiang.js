@@ -328,12 +328,12 @@ function joinTask() {
         }
 
         // text("instruction_icon") 全局其实都只有一个, 保险起见, 使用两个parent来限定范围
-        let checks = check.parent().parent().find(text("instruction_icon"));
-        
-        if (checks.size() > 0) {
-            // 解决部分店铺(欧莱雅)开卡无法勾选 [确认授权] 的问题           
-            check = checks.get(0);
-        } else if(checkBtn = boundsInside(
+        // let checks = check.parent().parent().find(text("instruction_icon"));
+        // if (checks.size() > 0) {
+        //     // 解决部分店铺(欧莱雅)开卡无法勾选 [确认授权] 的问题           
+        //     check = checks.get(0);
+        // } else 
+        if(checkBtn = boundsInside(
             0,
             check.bounds().top - 20,
             check.bounds().left - 1,
