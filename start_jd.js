@@ -1,4 +1,4 @@
-const VERSION = '20221111-E'
+const VERSION = '20221111-I'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
@@ -236,10 +236,14 @@ function getTaskByText() {
         tCount = 0,
         tTitle = null
     console.log('寻找未完成任务...')
-    let taskButtons = textMatches(/去完成|去领取|去打卡/).find()
+    let taskButtons = textMatches(/^(去完成|去领取|去打卡)$/).find()
     if (!taskButtons.empty()) { // 如果找不到任务，直接返回
         for (let i = 0; i < taskButtons.length; i++) {
             let button = taskButtons[i]
+            if (button.indexInParent() == 0) {
+                console.log('跳过，如果找不到任务可能是累计任务奖励的去领取按钮造成冲突；将去领取都领了试试。出现此问题麻烦反馈！谢谢！')
+                continue
+            }
             // if (tButton.text() == '去领取') {
             //     console.log('领取奖励')
             //     tButton.click()
@@ -289,18 +293,18 @@ function backToList() {
 // 浏览n秒的任务
 function timeTask() {
     console.log('等待浏览任务完成...')
-    if (textMatches(/.*滑动浏览.*[^可]得.*/).findOne(10000)) {
-        sleep(1000)
-        console.log('模拟滑动')
-        swipe(device.width / 2, device.height - 200, device.width / 2 + 20, device.height - 500, 1000)
-    }
     let c = 0
-    while (c < 40) { // 0.5 * 40 = 20 秒，防止死循环
+    while (c < 40) { // 0.5 * 60 = 20 秒，防止死循环
         if ((textMatches(/获得.*?金币/).exists() || descMatches(/获得.*?金币/).exists())) // 等待已完成出现
             break
         if ((textMatches(/已浏览/).exists() || descMatches(/已浏览/).exists())) { // 失败
             console.log('上限，返回刷新任务列表')
             return false
+        }
+        if (textMatches(/.*滑动浏览.*[^可]得.*/).exists()) {
+            console.log('进行模拟滑动')
+            swipe_flag = 1
+            swipe(device.width / 2, device.height - 200, device.width / 2 + 20, device.height - 500, 500)
         }
 
         // 弹窗处理
@@ -333,8 +337,16 @@ function joinTask() {
     } else {
         sleep(2000)
         if (check.text().match(/.*立即开卡.*|.*解锁全部会员福利.*|授权解锁/)) {
+            if (check.text() == '授权信息，解锁全部会员福利') {
+                check = text('去升级').findOnce()
+                if (!check) {
+                    console.log('此类型无法找到升级按钮，入会失败')
+                    return false
+                }
+            }
+
             let btn = check.bounds()
-            console.log('即将点击开卡/解锁福利，自动隐藏控制台')
+            console.log('即将点击开卡/解锁福利/升级，自动隐藏控制台')
             sleep(500)
             console.hide()
             sleep(500)
@@ -350,22 +362,14 @@ function joinTask() {
             return false
         }
 
-        // text("instruction_icon") 全局其实都只有一个, 保险起见, 使用两个parent来限定范围
-        let checks = check.parent().parent().find(text("instruction_icon"));
-        if (checks.size() > 0) {
-            // 解决部分店铺(欧莱雅)开卡无法勾选 [确认授权] 的问题           
-            check = checks.get(0);
+       
+        if (check.indexInParent() == 2) {
+            check = check.parent().child(1)
         } else {
-            if (check.indexInParent() >= 6) {
-                check = check.parent().child(5)
-            } else if (check.text() == '确认授权即同意') {
-                check = check.parent().child(0)
-            } else {
-                check = check.parent().parent().child(5)
-            }
+            let anchor = textContains('*****').findOnce()
+            check = anchor.parent().child(anchor.indexInParent() + 2)
         }
 
-        check = check
         log("最终[确认授权]前面选项框坐标为:", check);
         let x = check.bounds().centerX()
         let y = check.bounds().centerY()
@@ -538,7 +542,7 @@ function doTask(tButton, tText, tTitle) {
     } else if (tText.match(/入会/)) {
         console.log('进行入会任务')
         tFlag = joinTask()
-    } else if (tText.match(/浏览可得|浏览并关注|晚会/)) {
+    } else if (tText.match(/浏览可得|浏览并关注|晚会|参与/)) {
         if (tTitle.match(/种草城/)) {
             tFlag = shopTask()
         } else {
@@ -705,7 +709,7 @@ try {
             quit()
         }
 
-        if (taskText.match(/品牌墙|种草城/)) { // 品牌墙0/3只需要一次完成
+        if (taskText.match(/品牌墙/) || taskTitle.match(/种草城/)) { // 品牌墙0/3只需要一次完成
             taskCount = 1
         }
 
