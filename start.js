@@ -1,4 +1,4 @@
-const VERSION = '2022618-21'
+const VERSION = '20221111-L'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
@@ -11,7 +11,7 @@ let showVersion = function () {
     toast('当前版本：' + VERSION)
 }
 
-// alert('请把手机放稳，不要摇晃！', '不然有时候会跳出合伙赢喵币，导致任务阻塞')
+// alert('请把手机放稳，不要摇晃！', '不然有时候会跳出合伙赢喵果，导致任务阻塞')
 
 function getSetting() {
     let indices = []
@@ -59,7 +59,7 @@ if (autoMute) {
 
 console.show()
 showVersion()
-console.log('开始完成喵糖任务...')
+console.log('开始完成喵果任务...')
 console.log('按音量下键停止')
 
 device.keepScreenDim(60 * 60 * 1000)
@@ -73,7 +73,7 @@ function registerKey() {
         quit()
     }
     events.onKeyDown('volume_down', function (event) {
-        console.log('喵币任务脚本停止了')
+        console.log('喵果任务脚本停止了')
         console.log('请手动切换回主页面')
         device.cancelKeepingAwake()
         exit()
@@ -133,14 +133,14 @@ try {
                 continue
             }
             if (taskName) {
-                if (taskName.match(/签到领/)) {
+                if (taskName.match(/签到/)) {
                     console.log('进行签到任务')
                     sleep(1000)
                     jumpButtons[i].click()
                     sleep(8000)
                     return findTask()
                 }
-                if (!(taskName.match(/提醒|话费|斗地主|连连消|消消乐|流浪猫|开88|扔喵糖|占领|邀请|登录|组队|参与|浇水|特价版|小鸡|消除|穿搭|森林|点淘|人生|我的淘宝|庄园/) || content.match(/小互动/))) {
+                if (!(taskName.match(/淘金币|提醒|话费|斗地主|消消乐|流浪猫|开88|扔喵果|占领|邀请|登录|组队|参与|施肥|浇水|特价版|小鸡|消除|穿搭|森林|点淘|人生|我的淘宝|庄园|支付宝/) || content.match(/小互动/))) {
                     return [taskName, jumpButtons[i]]
                 }
             }
@@ -160,8 +160,12 @@ try {
         // textMatches(/.*浏览得奖励.*/).findOne(15000) // 等待开始
         sleep(5000)
         let finish_c = 0
-        while (finish_c < 50) { // 0.5 * 50 = 25 秒，防止死循环
-            let finish_reg = /.*任务已完成[\s\S]*|.*失败.*|.*上限.*|.*开小差.*|.*喵币已发放[\s\S]*/
+        while (finish_c < 60) { // 0.5 * 60 = 30 秒，防止死循环
+            if (textMatches(/.*下拉浏览.*/).exists()) {
+                console.log('进行模拟滑动')
+                swipe(device.width / 2, device.height - 200, device.width / 2 + 20, device.height - 500, 2000)
+            }
+            let finish_reg = /.*任务.*?完成[\s\S]*?|.*失败.*|.*上限.*|.*开小差.*|.*喵果已发放[\s\S]*/
             if (textMatches(finish_reg).exists() || descMatches(finish_reg).exists()) { // 等待已完成出现，有可能失败
                 break
             }
@@ -189,18 +193,18 @@ try {
             back()
             sleep(1000)
             // TODO: 返回检测
-            if (!textContains('当前进度').findOne(5000)) {
+            if (!textContains('果仓等级').findOne(5000)) {
                 console.log('似乎没有返回，二次尝试')
                 back()
             }
             return
         }
 
-        console.log('任务完成，返回')
+        console.log('任务结束，返回')
 
         back()
         sleep(1000)
-        if (!textContains('当前进度').findOne(5000)) {
+        if (!textContains('果仓等级').findOne(5000)) {
             if (currentActivity() == 'com.taobao.tao.TBMainActivity') {
                 console.log('返回到了主页，尝试重新进入任务')
                 id('com.taobao.taobao:id/rv_main_container').findOnce().child(3).child(0).click()
@@ -215,7 +219,7 @@ try {
         if (autoOpen) {
             // 打开淘宝活动页面
             console.log('正在打开淘宝...')
-            var url = 'pages.tmall.com/wow/z/hdwk/20220618/gamehome?disableNav=YES'
+            var url = 'pages.tmall.com/wow/z/hdwk/2022d11/singlegame?disableNav=YES&qd_from=tbsybutton'
 
             app.startActivity({
                 action: "VIEW",
@@ -224,18 +228,22 @@ try {
             sleep(2000)
 
             console.log('等待页面加载...')
-            textMatches(/领喵币/).findOne(20000)
-            console.log('准备打开任务列表')
-            sleep(2000)
+            textContains('去赚能量').findOne(20000)
+            console.log('准备打开任务列表，第一次启动页面等待10秒加载')
+            sleep(10000)
 
-            let c = findTextDescMatchesTimeout(/领喵币/, 1000)
+            let c = textContains('去赚能量').findOne(1000)
             if (c) {
                 console.log('使用默认方法尝试打开任务列表')
                 c.click()
+                sleep(1000)
+                c.click()
+                console.log('已点击，未能打开建议手动点击一下任务列表。此问题并非bug，和网络以及设备性能有关。')
+                console.log('检测任务列表，准备进行二次尝试')
             } else {
                 throw '无法找到任务列表入口'
             }
-            if (!textContains('当前进度').findOne(8000)) {
+            if (!textContains('果仓等级').findOne(8000)) {
                 console.log('默认方式打开失败，二次尝试')
                 console.log('首先检测弹窗')
                 for (let i = 0; i < 2 && text('关闭').findOne(2000); i++) { // 关闭弹窗
@@ -243,8 +251,8 @@ try {
                     click('关闭')
                     sleep(2000)
                 }
-                console.log('出现未能自动关闭的弹窗请手动关闭')
-                sleep(2000)
+                console.log('已试图自动关闭弹窗。有未能自动关闭的弹窗请手动关闭')
+                sleep(5000)
                 // let right = c.bounds().right
                 // let left = c.bounds().left
                 // let top = c.bounds().top
@@ -252,13 +260,13 @@ try {
                 // click(random(right,left), random(top, bottom))
                 click(c.bounds().centerX(), c.bounds().centerY())
                 console.log('已点击，等待任务列表出现')
-                if (!textContains('当前进度').findOne(8000)) {
+                if (!textContains('果仓等级').findOne(8000)) {
                     throw '无法打开任务列表'
                 }
             }
         } else {
             console.log('请在30秒内打开淘宝活动页，并打开任务列表')
-            if (textContains('当前进度').findOne(30000)) {
+            if (textContains('果仓等级').findOne(30000)) {
                 console.log('已打开，继续任务')
             } else {
                 console.log('未能检测到任务列表，退出')
@@ -293,7 +301,7 @@ try {
 
             console.log('没找到合适的任务。也许任务已经全部做完了。退出。互动任务不会自动完成。')
             console.log('请手动切换回主页面')
-            alert('任务已完成', '别忘了在脚本主页领取618红包！互动任务需要手动完成。')
+            alert('任务已完成', '别忘了在脚本主页领取双十一红包！互动任务需要手动完成。')
             quit()
         }
 

@@ -1,4 +1,4 @@
-const VERSION = '20221111-I'
+const VERSION = '20221111-L'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
@@ -502,7 +502,7 @@ function wallTask() {
     sleep(3000)
     for (let i of [2, 3, 4, 5, 6]) { // 选5个
         console.log('打开一个')
-        textContains('!q70').boundsInside(0, 0, device.width, device.height).findOnce(i).click()
+        textContains('!q70').boundsInside(100, 100, device.width, device.height).findOnce(i).click()
         sleep(5000)
         console.log('直接返回')
         back()
