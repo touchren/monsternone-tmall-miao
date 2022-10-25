@@ -263,7 +263,7 @@ function getTaskByText() {
                 tText = tmp.child(1).text()
                 if (!autoJoin && tText.match(/成功入会/)) continue
                 if (tTitle.match(/下单|小程序/)) continue
-                tButton = item.parent().child(3)
+                tButton = button
                 break
             }
         }
