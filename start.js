@@ -1,4 +1,4 @@
-const VERSION = '20221111-L'
+const VERSION = '20221111-O'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
@@ -130,7 +130,14 @@ try {
                 content = jumpButtons[i].parent().child(0).child(1).child(0).text()
             } catch (err) {
                 console.log(err)
-                continue
+                console.log('使用第二种方法尝试')
+                try {
+                    content = jumpButtons[i].parent().child(0).child(1).text()
+                    console.log('成功，继续任务')
+                }
+                catch (err) {
+                    continue
+                }
             }
             if (taskName) {
                 if (taskName.match(/签到/)) {
@@ -140,7 +147,7 @@ try {
                     sleep(8000)
                     return findTask()
                 }
-                if (!(taskName.match(/淘金币|提醒|话费|斗地主|消消乐|流浪猫|开88|扔喵果|占领|邀请|登录|组队|参与|施肥|浇水|特价版|小鸡|消除|穿搭|森林|点淘|人生|我的淘宝|庄园|支付宝/) || content.match(/小互动/))) {
+                if (!(taskName.match(/淘金币|提醒|开通|乐园|话费|斗地主|消消乐|流浪猫|开88|扔喵果|占领|邀请|登录|组队|参与|施肥|浇水|特价版|小鸡|消除|穿搭|森林|点淘|人生|我的淘宝|庄园|支付宝/) || content.match(/小互动/))) {
                     return [taskName, jumpButtons[i]]
                 }
             }
@@ -158,15 +165,20 @@ try {
         // }
 
         // textMatches(/.*浏览得奖励.*/).findOne(15000) // 等待开始
-        sleep(5000)
         let finish_c = 0
-        while (finish_c < 60) { // 0.5 * 60 = 30 秒，防止死循环
+        let countdown = 0
+        console.log('开始检测任务完成，部分控件无法检测，会在30秒后自动返回，请耐心等待。')
+        while (finish_c < 300) { // 0.1 * 300 = 30 秒，防止死循环
             if (textMatches(/.*下拉浏览.*/).exists()) {
                 console.log('进行模拟滑动')
                 swipe(device.width / 2, device.height - 200, device.width / 2 + 20, device.height - 500, 2000)
             }
-            let finish_reg = /.*任务.*?完成[\s\S]*?|.*失败.*|.*上限.*|.*开小差.*|.*喵果已发放[\s\S]*/
+            let finish_reg = /.*任务.*?完成[\s\S]*?|.*失败.*|.*上限.*|.*开小差.*|.*喵果已发放[\s\S]*|.*下单可获得[\s\S]*/
             if (textMatches(finish_reg).exists() || descMatches(finish_reg).exists()) { // 等待已完成出现，有可能失败
+                break
+            }
+            if (countdown == 0 && idContains('countdown').exists()) {
+                countdown = 1
                 break
             }
             if (textMatches(/.*休息会呗.*/).exists()) {
@@ -179,21 +191,37 @@ try {
                 console.log('跳过互动任务')
                 break
             }
-            sleep(500)
+            if (text('宝贝口袋').exists()) {
+                let cart = text('购物车').findOnce()
+                let x = cart.bounds().right
+                let y = cart.bounds().top
+                console.log('关闭直播购物车')
+                click(x, y - 100)
+            }
+            sleep(100)
             finish_c++
         }
 
-        if (finish_c > 49) {
+        if (countdown) {
+            console.log('出现图片类型标识，使用新方法完成，18秒后视为任务完成，自动返回')
+            sleep(18000)
+        }
+
+        if (finish_c > 299) {
             console.log('未检测到任务完成标识。返回。')
             // console.log('如果你认为这是一个bug请截图反馈。')
             // console.log('一般情况下，二次运行脚本即可。')
             // console.log('请手动切换回主页面')
             // device.cancelKeepingAwake()
             // quit()
+            if (textContains('果仓等级').exists()) {
+                console.log('店铺已主动返回，继续任务')
+                return
+            }
             back()
             sleep(1000)
             // TODO: 返回检测
-            if (!textContains('果仓等级').findOne(5000)) {
+            if (!textContains('果仓等级').findOne(8000)) {
                 console.log('似乎没有返回，二次尝试')
                 back()
             }

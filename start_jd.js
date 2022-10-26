@@ -1,4 +1,4 @@
-const VERSION = '20221111-L'
+const VERSION = '20221111-O'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
@@ -368,9 +368,26 @@ function joinTask() {
         } else {
             let anchor = textContains('*****').findOnce()
             check = anchor.parent().child(anchor.indexInParent() + 2)
+            if (! check.bounds().top >= anchor.bounds().bottom) {
+                console.log('使用第二种方法获取控件')
+                let check1 = anchor.parent().children().findOne(filter(function (w) {
+                    if (w.className().match(/ImageView/) && w.bounds().top >= anchor.bounds().bottom) {
+                        return true
+                    } else {
+                        return false
+                    }
+                }))
+                if (!check1) {
+                    console.log('第二种方法也无法确认授权勾选框，失败。返回。')
+                    return false
+                } else {
+                    check = check1
+                    console.log('成功，继续')
+                }
+            }
         }
 
-        log("最终[确认授权]前面选项框坐标为:", check);
+        console.log("最终[确认授权]前面选项框坐标为:", check.bounds());
         let x = check.bounds().centerX()
         let y = check.bounds().centerY()
 
@@ -418,7 +435,7 @@ function joinTask() {
 // 浏览商品和加购的任务，cart参数为是否加购的flag
 function itemTask(cart) {
     console.log('等待进入商品列表...')
-    if (!textContains('当前页').findOne(10000)) {
+    if (!textContains('当前页').findOne(20000)) {
         console.log('未能进入商品列表。')
         return false
     }
@@ -576,8 +593,13 @@ function doTask(tButton, tText, tTitle) {
                 return tFlag
             } else {
                 console.log('未能进入组队')
-                console.log('组队任务失败，避免卡死，退出')
-                quit()
+                if (findTextDescMatchesTimeout(/累计任务奖励/, 1000)) {
+                    console.log('当前仍在任务列表，返回')
+                    return true
+                } else {
+                    console.log('组队任务未检测到页面标识，视为已完成')
+                    tFlag = false
+                }
             }
         }
     } else {

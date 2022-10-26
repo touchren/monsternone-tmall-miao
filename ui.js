@@ -1,6 +1,6 @@
 "ui";
 
-const VERSION = '20221111-L'
+const VERSION = '20221111-O'
 
 const deviceWidth = device.width
 const deviceHeight = device.height
@@ -107,7 +107,7 @@ ui.layout(
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb1">
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/tb1.jpeg" />
-                                                <text gravity="center" textSize="16dp">淘宝预售能量红包会场</text>
+                                                <text gravity="center" textSize="16dp">淘宝预售单单开奖会场（能量红包已下线）</text>
                                             </vertical>
                                         </card>
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb2">
@@ -178,9 +178,10 @@ ui.layout(
                                 margin="5" cardCornerRadius="15dp" cardBackgroundColor="#f5f5f5" gravity="left">
                                 <vertical gravity="center_vertical">
                                     <text gravity="center" text="淘宝任务（喵果已上线）" size="20dp" color="#FF6D31" />
+                                    <text gravity="center">能量红包任务已经结束了</text>
                                     <horizontal gravity="center">
                                         <button id="startTask" text="喵果总动员" />
-                                        <button id="energyTask" text="能量任务" />
+                                        {/* <button id="energyTask" text="能量任务" /> */}
                                         <button id="huichangTask" text="会场任务" />
                                         <button id="tbHb1" text="淘宝双十一红包" />
                                     </horizontal>
@@ -205,6 +206,8 @@ ui.layout(
                                     <text>A: 华为/荣耀机型需要在设置-应用管理内手动打开软件的悬浮窗权限</text>
                                     <text>Q: 京东任务检测不到活动、无法检测到任务列表等情况</text>
                                     <text>A: 请首先检查系统WebView版本，高于101版本则无法获取到控件（检测方法：手机设置-应用列表，勾选显示系统应用后搜索webview）</text>
+                                    <text>Q: 淘宝任务完成不自动返回</text>
+                                    <text>A: 部分任务完成标识为图片，脚本无法检测，等待30秒脚本会自动返回，具备持续完成任务的能力，请放置等待</text>
                                     <text>Q: 支付宝、京东金融、微信小程序任务</text>
                                     <text>A: 都不会添加。小程序无法获取控件只能截图，性能太差；另二者涉及到财产安全，不会设计自动完成。</text>
                                 </vertical>
@@ -333,9 +336,9 @@ ui.startTask.click(function () {
     engines.execScriptFile('./start.js')
 })
 
-ui.energyTask.click(function () {
-    engines.execScriptFile('./tb_nengliang.js')
-})
+// ui.energyTask.click(function () {
+//     engines.execScriptFile('./tb_nengliang.js')
+// })
 
 ui.huichangTask.click(function () {
     engines.execScriptFile('./tb_huichang.js')

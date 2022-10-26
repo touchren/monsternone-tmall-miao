@@ -1,4 +1,4 @@
-const VERSION = '20221111-L'
+const VERSION = '20221111-O'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
@@ -270,14 +270,16 @@ try {
     console.log('首先关闭弹窗')
     try {
         idContains('J_wfdlgwrap_6').findOnce().child(0).click()
-        sleep(1000)
+        sleep(5000)
+        console.log('领红包弹窗已关闭')
     } catch (err) {
         console.log(err)
         console.log('领红包弹窗关闭失败。此问题不影响运行')
     }
     try {
         idContains('CLOSE').findOnce().click()
-        sleep(1000)
+        sleep(2000)
+        console.log('其他弹窗已关闭')
     } catch (err) {
         console.log(err)
         console.log('其他弹窗关闭失败。此问题不影响运行')
