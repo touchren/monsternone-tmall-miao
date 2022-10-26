@@ -338,7 +338,7 @@ try {
                 sleep(2000)
                 buttons[i].click()
                 console.log('等待加载')
-                if (text('加入购物车').findOne(10000) || currentActivity() == 'com.taobao.android.detail.wrapper.activity.DetailActivity') {
+                if (textMatches(/加入购物车|粉丝福利购/).findOne(10000) || currentActivity() == 'com.taobao.android.detail.wrapper.activity.DetailActivity') {
                     console.log('商品打开成功，返回')
                     back()
                     if (!text('双11超红精选热卖').findOne(10000)) {
