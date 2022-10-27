@@ -1,6 +1,6 @@
 "ui";
 
-const VERSION = '20221111-O'
+const VERSION = '20221111-P'
 
 const deviceWidth = device.width
 const deviceHeight = device.height
@@ -67,7 +67,6 @@ ui.layout(
                                             gravity="left" id="tbHb">
                                             <vertical gravity="center_vertical">
                                                 <text gravity="center" color="#FFF000" text="淘宝红包！！" size="30dp" />
-                                                <text gravity="center">(已经开始发放)</text>
                                             </vertical>
                                         </card>
                                         <card w="{{parseInt(deviceWidth*0.45) + 'px'}}" h="{{parseInt(deviceHeight*0.18) + 'px'}}"
@@ -76,7 +75,7 @@ ui.layout(
                                             <vertical gravity="center_vertical">
                                                 <text gravity="center" color="#FFF000" text="京东红包！！" size="30dp" />
                                                 <text gravity="center">领完退出再进，每日3次</text>
-                                                <text gravity="center">(10.28开始发放)</text>
+                                                <text gravity="center">(10.28中午12点开启)</text>
                                             </vertical>
                                         </card>
                                     </horizontal>
@@ -107,7 +106,7 @@ ui.layout(
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb1">
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/tb1.jpeg" />
-                                                <text gravity="center" textSize="16dp">淘宝预售单单开奖会场（能量红包已下线）</text>
+                                                <text gravity="center" textSize="16dp">淘宝预售单单开奖会场</text>
                                             </vertical>
                                         </card>
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb2">
@@ -178,7 +177,6 @@ ui.layout(
                                 margin="5" cardCornerRadius="15dp" cardBackgroundColor="#f5f5f5" gravity="left">
                                 <vertical gravity="center_vertical">
                                     <text gravity="center" text="淘宝任务（喵果已上线）" size="20dp" color="#FF6D31" />
-                                    <text gravity="center">能量红包任务已经结束了</text>
                                     <horizontal gravity="center">
                                         <button id="startTask" text="喵果总动员" />
                                         {/* <button id="energyTask" text="能量任务" /> */}
@@ -206,6 +204,7 @@ ui.layout(
                                     <text>A: 华为/荣耀机型需要在设置-应用管理内手动打开软件的悬浮窗权限</text>
                                     <text>Q: 京东任务检测不到活动、无法检测到任务列表等情况</text>
                                     <text>A: 请首先检查系统WebView版本，高于101版本则无法获取到控件（检测方法：手机设置-应用列表，勾选显示系统应用后搜索webview）</text>
+                                    <text>解决方案：给京东客服发送 debugtbs.qq.com，然后点击打开；选择安装线上内核，安装完成之后自动重启；运行任务尝试。此方法原理为使用腾讯tbs内核代替系统webview。</text>
                                     <text>Q: 淘宝任务完成不自动返回</text>
                                     <text>A: 部分任务完成标识为图片，脚本无法检测，等待30秒脚本会自动返回，具备持续完成任务的能力，请放置等待</text>
                                     <text>Q: 支付宝、京东金融、微信小程序任务</text>
@@ -308,18 +307,14 @@ ui.tbHb.click(function () {
     openTbUrl(url)
 })
 
-ui.jdHb.click(function () {
-    toast('京东红包暂未开启')
-})
+ui.jdHb.click(openJdHb)
 
 ui.tbHb1.click(function () {
     const url = 'https://s.m.taobao.com/h5?q=惊喜不断来dddd'
     openTbUrl(url)
 })
 
-ui.jdHb1.click(function () {
-    toast('京东红包暂未开启')
-})
+ui.jdHb1.click(openJdHb)
 
 ui.tb1.click(function () { openTbUrl('https://s.click.taobao.com/UiWnRSu') })
 ui.tb2.click(function () { openTbUrl('https://s.click.taobao.com/0KclRSu') })
@@ -347,6 +342,27 @@ ui.huichangTask.click(function () {
 ui.startJDTask.click(function () {
     engines.execScriptFile('./start_jd.js')
 })
+
+function openJdHb() {
+    const url = 'https://u.jd.com/kd4SkwG'
+    const text = '88￥M60e6DOMlTm7PmDZ%'
+    dialogs.build({
+        title: "是否使用复制京口令领取？",
+        content: "实测京口令领取红包更大，如果app未自动弹出口令请使用默认方式",
+        positive: "京口令方式",
+        negative: "默认方式"
+    }).on("positive", () => {
+        setClip(text)
+        rawInput("已复制，部分机型限制剪贴板，可以手动复制", text)
+        if (launch('com.jingdong.app.mall')) {
+            toast('京口令已复制，打开京东App领取')
+        } else {
+            toast('京口令已复制，请手动打开京东App领取')
+        }
+    }).on("negative", () => {
+        openJdUrl(url)
+    }).show()
+}
 
 // 唤起京东APP打开url的方法
 function openJdUrl(url) {

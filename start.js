@@ -1,4 +1,4 @@
-const VERSION = '20221111-O'
+const VERSION = '20221111-P'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
@@ -250,9 +250,11 @@ try {
 
     // 喵果数量
     function getCoin() {
+        console.log('获取喵果数量')
         try {
             let e = textContains('当前喵果').findOnce()
             let num = e.text().match(/当前喵果(\d*)/)[1]
+            console.log('当前共有', num, '喵果')
             return num
         } catch (err) {
             console.log(err)
