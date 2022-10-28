@@ -109,6 +109,12 @@ ui.layout(
                                                 <text gravity="center" textSize="16dp">淘宝预售单单开奖会场</text>
                                             </vertical>
                                         </card>
+                                        <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb6">
+                                            <vertical>
+                                                <img layout_gravity="center" src="file://res/activity/tb6.jpeg" />
+                                                <text gravity="center" textSize="16dp">超级U惠，官方精选预售清单</text>
+                                            </vertical>
+                                        </card>
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb2">
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/tb2.jpeg" />
@@ -320,6 +326,7 @@ ui.tb2.click(function () { openTbUrl('https://s.click.taobao.com/0KclRSu') })
 ui.tb3.click(function () { openTbUrl('https://s.click.taobao.com/5ByfBSu') })
 ui.tb4.click(function () { openTbUrl('https://s.click.taobao.com/76MkRSu') })
 ui.tb5.click(function () { openTbUrl('https://s.m.taobao.com/h5?q=惊喜不断来dddd') })
+ui.tb6.click(function () { openTbUrl('https://s.click.taobao.com/7S3IrRu') })
 ui.jd1.click(function () { openJdUrl('https://u.jd.com/kdBs9Ry') })
 ui.jd2.click(function () { openJdUrl('https://so.m.jd.com/ware/search.action?keyword=购物季补贴555') })
 ui.jd3.click(function () { openJdUrl('https://u.jd.com/kCBuyG7') })
