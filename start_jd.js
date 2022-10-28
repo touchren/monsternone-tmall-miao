@@ -252,6 +252,7 @@ function getTaskByText() {
             // }
 
             let tmp = button.parent().child(button.indexInParent() - 1)
+            if(tmp.child(0)==null) continue
             tTitle = tmp.child(0).text()
             let r = tTitle.match(/(\d*)\/(\d*)/)
             if (!r) continue
