@@ -75,7 +75,6 @@ ui.layout(
                                             <vertical gravity="center_vertical">
                                                 <text gravity="center" color="#FFF000" text="京东红包！！" size="30dp" />
                                                 <text gravity="center">领完退出再进，每日3次</text>
-                                                <text gravity="center">(10.28中午12点开启)</text>
                                             </vertical>
                                         </card>
                                     </horizontal>
@@ -197,7 +196,7 @@ ui.layout(
                                     <text gravity="center" text="京东任务" size="20dp" color="#FF6D31" />
                                     <horizontal gravity="center">
                                         <button id="startJDTask" text="主活动" />
-                                        <button id="jdHb1" text="京东双十一红包（28日中午12点开启）" />
+                                        <button id="jdHb1" text="京东双十一红包" />
                                     </horizontal>
                                 </vertical>
                             </card>
