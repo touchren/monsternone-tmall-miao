@@ -1,4 +1,4 @@
-const VERSION = '20221111-P'
+const VERSION = '20221111-Q'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
