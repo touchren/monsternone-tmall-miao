@@ -281,14 +281,14 @@ ui.automationPermission.click(function () {
 ui.guild.click(function () {
     app.startActivity({
         action: 'VIEW',
-        data: 'mqqapi://forward/url?url_prefix=aHR0cHM6Ly9xdW4ucXEuY29tL3Fxd2ViL3F1bnByby9zaGFyZT9pbnZpdGVDb2RlPTFYMGNzSFRXU1Bu'
+        data: 'mqqapi://forward/url?url_prefix=aHR0cHM6Ly9wZC5xcS5jb20vcy9hM2l4YzI5OTY='
     })
 })
 
 ui.guild1.click(function () {
     app.startActivity({
         action: 'VIEW',
-        data: 'mqqapi://forward/url?url_prefix=aHR0cHM6Ly9xdW4ucXEuY29tL3Fxd2ViL3F1bnByby9zaGFyZT9pbnZpdGVDb2RlPTFYMGNzSFRXU1Bu'
+        data: 'mqqapi://forward/url?url_prefix=aHR0cHM6Ly9wZC5xcS5jb20vcy9hM2l4YzI5OTY='
     })
 })
 
