@@ -306,18 +306,10 @@ ui.qun2.click(function () {
     })
 })
 
-ui.tbHb.click(function () {
-    const url = 'https://s.m.taobao.com/h5?q=惊喜不断来dddd'
-    openTbUrl(url)
-})
+ui.tbHb.click(function () { openTbUrl('https://s.m.taobao.com/h5?q=惊喜不断来dddd') })
+ui.tbHb1.click(function () { openTbUrl('https://s.m.taobao.com/h5?q=惊喜不断来dddd') })
 
 ui.jdHb.click(openJdHb)
-
-ui.tbHb1.click(function () {
-    const url = 'https://s.m.taobao.com/h5?q=惊喜不断来dddd'
-    openTbUrl(url)
-})
-
 ui.jdHb1.click(openJdHb)
 
 ui.tb1.click(function () { openTbUrl('https://s.click.taobao.com/UiWnRSu') })
@@ -351,7 +343,7 @@ ui.startJDTask.click(function () {
 function openJdHb() {
     // const url = 'https://u.jd.com/kd4SkwG'
     const url = 'https://so.m.jd.com/ware/search.action?keyword=购物季补贴555'
-    const text = '88￥M60e6DOMlTm7PmDZ%'
+    const text = '88￥BCE4EDlejxMOPciH%'
     dialogs.build({
         title: "是否使用复制京口令领取？",
         content: "实测京口令领取红包更大，如果app未自动弹出口令请使用默认方式",
