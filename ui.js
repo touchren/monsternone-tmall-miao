@@ -1,6 +1,6 @@
 "ui";
 
-const VERSION = '20221111-Q'
+const VERSION = '20221111-R'
 
 const deviceWidth = device.width
 const deviceHeight = device.height
