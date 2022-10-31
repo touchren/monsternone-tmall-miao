@@ -1,4 +1,4 @@
-const VERSION = '20221111-P'
+const VERSION = '20221111-R'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
@@ -328,9 +328,11 @@ try {
                 scrollDown()
                 sleep(2000)
                 buttons = textContains('item_pic').find()
+                console.log(buttons.length)
             }
             if (count > buttons.length) {
-                throw '商品数量不足，退出任务'
+                console.log('商品数量不足，分次完成')
+                count = buttons.length
             }
 
             for (let i = 0; i < count; i++) {

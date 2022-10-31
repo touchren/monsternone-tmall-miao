@@ -1,4 +1,4 @@
-const VERSION = '20221111-P'
+const VERSION = '20221111-R'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
@@ -263,7 +263,7 @@ function getTaskByText() {
             if (tCount) { // 如果数字相减不为0，证明没完成
                 tText = tmp.child(1).text()
                 if (!autoJoin && tText.match(/成功入会/)) continue
-                if (tTitle.match(/下单|小程序/)) continue
+                if (tTitle.match(/下单|小程序|裂变/)) continue
                 tButton = button
                 break
             }

@@ -1,6 +1,6 @@
 "ui";
 
-const VERSION = '20221111-P'
+const VERSION = '20221111-R'
 
 const deviceWidth = device.width
 const deviceHeight = device.height
@@ -75,7 +75,6 @@ ui.layout(
                                             <vertical gravity="center_vertical">
                                                 <text gravity="center" color="#FFF000" text="京东红包！！" size="30dp" />
                                                 <text gravity="center">领完退出再进，每日3次</text>
-                                                <text gravity="center">(10.28中午12点开启)</text>
                                             </vertical>
                                         </card>
                                     </horizontal>
@@ -107,6 +106,12 @@ ui.layout(
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/tb1.jpeg" />
                                                 <text gravity="center" textSize="16dp">淘宝预售单单开奖会场</text>
+                                            </vertical>
+                                        </card>
+                                        <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb6">
+                                            <vertical>
+                                                <img layout_gravity="center" src="file://res/activity/tb6.jpeg" />
+                                                <text gravity="center" textSize="16dp">超级U惠，官方精选预售清单</text>
                                             </vertical>
                                         </card>
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb2">
@@ -191,7 +196,7 @@ ui.layout(
                                     <text gravity="center" text="京东任务" size="20dp" color="#FF6D31" />
                                     <horizontal gravity="center">
                                         <button id="startJDTask" text="主活动" />
-                                        <button id="jdHb1" text="京东双十一红包（28日中午12点开启）" />
+                                        <button id="jdHb1" text="京东双十一红包" />
                                     </horizontal>
                                 </vertical>
                             </card>
@@ -203,8 +208,7 @@ ui.layout(
                                     <text>Q: 点击开始运行，跳转到通知权限页面</text>
                                     <text>A: 华为/荣耀机型需要在设置-应用管理内手动打开软件的悬浮窗权限</text>
                                     <text>Q: 京东任务检测不到活动、无法检测到任务列表等情况</text>
-                                    <text>A: 请首先检查系统WebView版本，高于101版本则无法获取到控件（检测方法：手机设置-应用列表，勾选显示系统应用后搜索webview）</text>
-                                    <text>解决方案：给京东客服发送 debugtbs.qq.com，然后点击打开；选择安装线上内核，安装完成之后自动重启；运行任务尝试。此方法原理为使用腾讯tbs内核代替系统webview。</text>
+                                    <text textStyle="bold">A: 解决方案：给京东客服发送 debugtbs.qq.com，然后点击打开；选择安装线上内核，安装完成之后自动重启；运行任务尝试。此方法原理为使用腾讯tbs内核代替系统webview。</text>
                                     <text>Q: 淘宝任务完成不自动返回</text>
                                     <text>A: 部分任务完成标识为图片，脚本无法检测，等待30秒脚本会自动返回，具备持续完成任务的能力，请放置等待</text>
                                     <text>Q: 支付宝、京东金融、微信小程序任务</text>
@@ -277,14 +281,14 @@ ui.automationPermission.click(function () {
 ui.guild.click(function () {
     app.startActivity({
         action: 'VIEW',
-        data: 'mqqapi://forward/url?url_prefix=aHR0cHM6Ly9xdW4ucXEuY29tL3Fxd2ViL3F1bnByby9zaGFyZT9pbnZpdGVDb2RlPTFYMGNzSFRXU1Bu'
+        data: 'mqqapi://forward/url?url_prefix=aHR0cHM6Ly9wZC5xcS5jb20vcy9hM2l4YzI5OTY='
     })
 })
 
 ui.guild1.click(function () {
     app.startActivity({
         action: 'VIEW',
-        data: 'mqqapi://forward/url?url_prefix=aHR0cHM6Ly9xdW4ucXEuY29tL3Fxd2ViL3F1bnByby9zaGFyZT9pbnZpdGVDb2RlPTFYMGNzSFRXU1Bu'
+        data: 'mqqapi://forward/url?url_prefix=aHR0cHM6Ly9wZC5xcS5jb20vcy9hM2l4YzI5OTY='
     })
 })
 
@@ -302,18 +306,10 @@ ui.qun2.click(function () {
     })
 })
 
-ui.tbHb.click(function () {
-    const url = 'https://s.m.taobao.com/h5?q=惊喜不断来dddd'
-    openTbUrl(url)
-})
+ui.tbHb.click(function () { openTbUrl('https://s.m.taobao.com/h5?q=惊喜不断来dddd') })
+ui.tbHb1.click(function () { openTbUrl('https://s.m.taobao.com/h5?q=惊喜不断来dddd') })
 
 ui.jdHb.click(openJdHb)
-
-ui.tbHb1.click(function () {
-    const url = 'https://s.m.taobao.com/h5?q=惊喜不断来dddd'
-    openTbUrl(url)
-})
-
 ui.jdHb1.click(openJdHb)
 
 ui.tb1.click(function () { openTbUrl('https://s.click.taobao.com/UiWnRSu') })
@@ -321,8 +317,9 @@ ui.tb2.click(function () { openTbUrl('https://s.click.taobao.com/0KclRSu') })
 ui.tb3.click(function () { openTbUrl('https://s.click.taobao.com/5ByfBSu') })
 ui.tb4.click(function () { openTbUrl('https://s.click.taobao.com/76MkRSu') })
 ui.tb5.click(function () { openTbUrl('https://s.m.taobao.com/h5?q=惊喜不断来dddd') })
+ui.tb6.click(function () { openTbUrl('https://s.click.taobao.com/7S3IrRu') })
 ui.jd1.click(function () { openJdUrl('https://u.jd.com/kdBs9Ry') })
-ui.jd2.click(function () { openJdUrl('https://u.jd.com/kCB6yl5') })
+ui.jd2.click(function () { openJdUrl('https://so.m.jd.com/ware/search.action?keyword=购物季补贴555') })
 ui.jd3.click(function () { openJdUrl('https://u.jd.com/kCBuyG7') })
 ui.jd4.click(function () { openJdUrl('https://u.jd.com/kKBsW0H') })
 
@@ -344,8 +341,9 @@ ui.startJDTask.click(function () {
 })
 
 function openJdHb() {
-    const url = 'https://u.jd.com/kd4SkwG'
-    const text = '88￥M60e6DOMlTm7PmDZ%'
+    // const url = 'https://u.jd.com/kd4SkwG'
+    const url = 'https://so.m.jd.com/ware/search.action?keyword=购物季补贴555'
+    const text = '88￥BCE4EDlejxMOPciH%'
     dialogs.build({
         title: "是否使用复制京口令领取？",
         content: "实测京口令领取红包更大，如果app未自动弹出口令请使用默认方式",
