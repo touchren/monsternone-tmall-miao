@@ -351,7 +351,7 @@ try {
                     throw '商品页未能加载'
                 }
             }
-            sleep(1000)
+            // sleep(1000)
             backToList()
         } else if (jumpButton[0].match(/搜索/)) {
             jumpButton[1].click()
@@ -362,15 +362,17 @@ try {
                 listView.child(1).click()
             }
             liulan()
+            sleep(1000)
+            back()
             backToList()
-        } else if (jumpButton[0].match(/为你推荐/)) {
+        } else if (jumpButton[0].match(/为你推荐|主会场/)) {
             jumpButton[1].click()
             liulan()
         } else {
             jumpButton[1].click()
             liulan()
-            sleep(1000)
-            back()
+            // sleep(1000)
+            // back()
             backToList()
         }
 
