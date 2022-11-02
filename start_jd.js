@@ -270,7 +270,7 @@ function timeTask() {
             console.log('进行模拟滑动')
             swipe_flag = 1
             swipe(device.width / 2, device.height - 200, device.width / 2 + 20, device.height - 500, 500)
-            finish_c++
+            c++
         }
 
         // 弹窗处理
