@@ -317,11 +317,11 @@ ui.tb2.click(function () { openTbUrl('https://s.click.taobao.com/UOAHjRu') })
 ui.tb3.click(function () { openTbUrl('https://s.click.taobao.com/gdnHjRu') })
 ui.tb4.click(function () { openTbUrl('https://s.click.taobao.com/twoIjRu') })
 ui.tb5.click(function () { openTbUrl('https://s.click.taobao.com/B8OFjRu') })
-ui.jd1.click(function () { openJdUrl('https://u.jd.com/xCNYL2M') })
-ui.jd2.click(function () { openJdUrl('https://u.jd.com/xIllOGg') })
-ui.jd3.click(function () { openJdUrl('https://u.jd.com/xLll0hJ') })
-ui.jd4.click(function () { openJdUrl('https://u.jd.com/xMl7526') })
-ui.jd5.click(function () { openJdUrl('https://u.jd.com/kCBuyG7') })
+ui.jd1.click(function () { openJdUrl('https://u.jd.com/xKR9uPx') })
+ui.jd2.click(function () { openJdUrl('https://u.jd.com/xw7t6WL') })
+ui.jd3.click(function () { openJdUrl('https://u.jd.com/xLR5IbX') })
+ui.jd4.click(function () { openJdUrl('https://u.jd.com/xLReHnX') })
+ui.jd5.click(function () { openJdUrl('https://u.jd.com/xIRozHq') })
 
 ui.startTask.click(function () {
     // alert('淘宝活动尚未开始', '敬请关注脚本更新')
@@ -342,7 +342,7 @@ ui.startJDTask.click(function () {
 
 function openJdHb() {
     // const url = 'https://u.jd.com/kd4SkwG'
-    const url = 'https://so.m.jd.com/ware/search.action?keyword=购物季补贴555'
+    const url = 'https://so.m.jd.com/ware/search.action?keyword=粉丝福利886'
     const text = '88￥BCE4EDlejxMOPciH%'
     dialogs.build({
         title: "是否使用复制京口令领取？",
