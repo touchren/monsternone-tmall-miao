@@ -1,6 +1,6 @@
 "ui";
 
-const VERSION = '20221111-T'
+const VERSION = '20221111-U'
 
 const deviceWidth = device.width
 const deviceHeight = device.height
@@ -59,7 +59,8 @@ ui.layout(
                             <card w="{{parseInt(deviceWidth*0.95) + 'px'}}" h="auto"
                                 margin="5" cardCornerRadius="15dp" cardBackgroundColor="#FFC0BE" gravity="left">
                                 <vertical gravity="center_vertical">
-                                    <text gravity="center" color="#E8110F" text="双十一必领无门槛红包！！" size="30dp" />
+                                    <text gravity="center" color="#E8110F" text="双十一必领无门槛红包第二轮！！" size="30dp" />
+                                    <text gravity="center" color="#E8110F" text="11.4首发，机率更大！！" size="30dp" />
                                     <text gravity="center" color="#E8110F" text="↓↓↓↓↓↓点击下方色块领取↓↓↓↓↓↓" />
                                     <horizontal gravity="center">
                                         <card w="{{parseInt(deviceWidth*0.45) + 'px'}}" h="{{parseInt(deviceHeight*0.18) + 'px'}}"
@@ -343,7 +344,7 @@ ui.startJDTask.click(function () {
 function openJdHb() {
     // const url = 'https://u.jd.com/kd4SkwG'
     const url = 'https://so.m.jd.com/ware/search.action?keyword=粉丝福利886'
-    const text = '88￥BCE4EDlejxMOPciH%'
+    const text = '88￥S57hxAmHJ5d76c1u￥'
     dialogs.build({
         title: "是否使用复制京口令领取？",
         content: "实测京口令领取红包更大，如果app未自动弹出口令请使用默认方式",
