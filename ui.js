@@ -111,7 +111,7 @@ ui.layout(
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb3">
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/tb3.jpg" />
-                                                <text gravity="center" textSize="16dp">官方小编推荐现货内购清单</text>
+                                                <text gravity="center" textSize="16dp">天猫超市买前先领券，优惠超轻松</text>
                                             </vertical>
                                         </card>
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb4">
@@ -123,7 +123,7 @@ ui.layout(
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb5">
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/tb5.jpg" />
-                                                <text gravity="center" textSize="16dp">聚划算抢先购</text>
+                                                <text gravity="center" textSize="16dp">双11天天开大奖（5日开始）</text>
                                             </vertical>
                                         </card>
                                     </vertical>
@@ -314,9 +314,9 @@ ui.jdHb1.click(openJdHb)
 
 ui.tb1.click(function () { openTbUrl('https://s.m.taobao.com/h5?q=惊喜不断来dddd') })
 ui.tb2.click(function () { openTbUrl('https://s.click.taobao.com/UOAHjRu') })
-ui.tb3.click(function () { openTbUrl('https://s.click.taobao.com/gdnHjRu') })
+ui.tb3.click(function () { openTbUrl('https://s.click.taobao.com/ZnccXRu') })
 ui.tb4.click(function () { openTbUrl('https://s.click.taobao.com/twoIjRu') })
-ui.tb5.click(function () { openTbUrl('https://s.click.taobao.com/B8OFjRu') })
+ui.tb5.click(function () { openTbUrl('https://s.click.taobao.com/l0XeXRu') })
 ui.jd1.click(function () { openJdUrl('https://u.jd.com/xKR9uPx') })
 ui.jd2.click(function () { openJdUrl('https://u.jd.com/xw7t6WL') })
 ui.jd3.click(function () { openJdUrl('https://u.jd.com/xLR5IbX') })
