@@ -1,6 +1,6 @@
 "ui";
 
-const VERSION = '20221111-R'
+const VERSION = '20221111-T'
 
 const deviceWidth = device.width
 const deviceHeight = device.height
@@ -96,40 +96,34 @@ ui.layout(
                                 <text textStyle="bold" gravity="center|top" textSize="18dp">淘宝会场(可滑动查看)</text>
                                 <scroll gravity="center|top">
                                     <vertical>
-                                        <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb5">
-                                            <vertical>
-                                                <img layout_gravity="center" src="file://res/activity/tb5.jpeg" />
-                                                <text gravity="center" textSize="16dp">淘宝预售主会场</text>
-                                            </vertical>
-                                        </card>
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb1">
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/tb1.jpeg" />
-                                                <text gravity="center" textSize="16dp">淘宝预售单单开奖会场</text>
-                                            </vertical>
-                                        </card>
-                                        <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb6">
-                                            <vertical>
-                                                <img layout_gravity="center" src="file://res/activity/tb6.jpeg" />
-                                                <text gravity="center" textSize="16dp">超级U惠，官方精选预售清单</text>
+                                                <text gravity="center" textSize="16dp">淘宝主会场</text>
                                             </vertical>
                                         </card>
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb2">
                                             <vertical>
-                                                <img layout_gravity="center" src="file://res/activity/tb2.jpeg" />
-                                                <text gravity="center" textSize="16dp">猫超内购清单</text>
-                                            </vertical>
-                                        </card>
-                                        <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb4">
-                                            <vertical>
-                                                <img layout_gravity="center" src="file://res/activity/tb4.jpeg" />
-                                                <text gravity="center" textSize="16dp">预售实时热销榜</text>
+                                                <img layout_gravity="center" src="file://res/activity/tb2.jpg" />
+                                                <text gravity="center" textSize="16dp">超级U选，官方精选爆款</text>
                                             </vertical>
                                         </card>
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb3">
                                             <vertical>
-                                                <img layout_gravity="center" src="file://res/activity/tb3.jpeg" />
-                                                <text gravity="center" textSize="16dp">聚划算百亿补贴</text>
+                                                <img layout_gravity="center" src="file://res/activity/tb3.jpg" />
+                                                <text gravity="center" textSize="16dp">官方小编推荐现货内购清单</text>
+                                            </vertical>
+                                        </card>
+                                        <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb4">
+                                            <vertical>
+                                                <img layout_gravity="center" src="file://res/activity/tb4.jpg" />
+                                                <text gravity="center" textSize="16dp">千万神券</text>
+                                            </vertical>
+                                        </card>
+                                        <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb5">
+                                            <vertical>
+                                                <img layout_gravity="center" src="file://res/activity/tb5.jpg" />
+                                                <text gravity="center" textSize="16dp">聚划算抢先购</text>
                                             </vertical>
                                         </card>
                                     </vertical>
@@ -145,25 +139,31 @@ ui.layout(
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="jd1">
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/jd1.jpg" />
-                                                <text gravity="center" textSize="16dp">京东预售主会场</text>
+                                                <text gravity="center" textSize="16dp">京东双十一主会场</text>
                                             </vertical>
                                         </card>
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="jd2">
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/jd2.jpg" />
-                                                <text gravity="center" textSize="16dp">爆款手机买贵1.2倍退差</text>
-                                            </vertical>
-                                        </card>
-                                        <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="jd4">
-                                            <vertical>
-                                                <img layout_gravity="center" src="file://res/activity/jd4.jpg" />
-                                                <text gravity="center" textSize="16dp">家电双11预售提前购</text>
+                                                <text gravity="center" textSize="16dp">手机爆款，30天价保买贵退差</text>
                                             </vertical>
                                         </card>
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="jd3">
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/jd3.jpg" />
-                                                <text gravity="center" textSize="16dp">爆款价同11.11，定金100抵1111</text>
+                                                <text gravity="center" textSize="16dp">家电开门红，PLUS专享1450元补贴</text>
+                                            </vertical>
+                                        </card>
+                                        <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="jd4">
+                                            <vertical>
+                                                <img layout_gravity="center" src="file://res/activity/jd4.jpg" />
+                                                <text gravity="center" textSize="16dp">居家好物低至9.9元</text>
+                                            </vertical>
+                                        </card>
+                                        <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="jd5">
+                                            <vertical>
+                                                <img layout_gravity="center" src="file://res/activity/jd5.jpg" />
+                                                <text gravity="center" textSize="16dp">电脑数码</text>
                                             </vertical>
                                         </card>
                                     </vertical>
@@ -312,16 +312,16 @@ ui.tbHb1.click(function () { openTbUrl('https://s.m.taobao.com/h5?q=惊喜不断
 ui.jdHb.click(openJdHb)
 ui.jdHb1.click(openJdHb)
 
-ui.tb1.click(function () { openTbUrl('https://s.click.taobao.com/UiWnRSu') })
-ui.tb2.click(function () { openTbUrl('https://s.click.taobao.com/0KclRSu') })
-ui.tb3.click(function () { openTbUrl('https://s.click.taobao.com/5ByfBSu') })
-ui.tb4.click(function () { openTbUrl('https://s.click.taobao.com/76MkRSu') })
-ui.tb5.click(function () { openTbUrl('https://s.m.taobao.com/h5?q=惊喜不断来dddd') })
-ui.tb6.click(function () { openTbUrl('https://s.click.taobao.com/7S3IrRu') })
-ui.jd1.click(function () { openJdUrl('https://u.jd.com/kdBs9Ry') })
-ui.jd2.click(function () { openJdUrl('https://so.m.jd.com/ware/search.action?keyword=购物季补贴555') })
-ui.jd3.click(function () { openJdUrl('https://u.jd.com/kCBuyG7') })
-ui.jd4.click(function () { openJdUrl('https://u.jd.com/kKBsW0H') })
+ui.tb1.click(function () { openTbUrl('https://s.m.taobao.com/h5?q=惊喜不断来dddd') })
+ui.tb2.click(function () { openTbUrl('https://s.click.taobao.com/UOAHjRu') })
+ui.tb3.click(function () { openTbUrl('https://s.click.taobao.com/gdnHjRu') })
+ui.tb4.click(function () { openTbUrl('https://s.click.taobao.com/twoIjRu') })
+ui.tb5.click(function () { openTbUrl('https://s.click.taobao.com/B8OFjRu') })
+ui.jd1.click(function () { openJdUrl('https://u.jd.com/xCNYL2M') })
+ui.jd2.click(function () { openJdUrl('https://u.jd.com/xIllOGg') })
+ui.jd3.click(function () { openJdUrl('https://u.jd.com/xLll0hJ') })
+ui.jd4.click(function () { openJdUrl('https://u.jd.com/xMl7526') })
+ui.jd5.click(function () { openJdUrl('https://u.jd.com/kCBuyG7') })
 
 ui.startTask.click(function () {
     // alert('淘宝活动尚未开始', '敬请关注脚本更新')

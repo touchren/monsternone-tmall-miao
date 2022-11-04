@@ -1,4 +1,4 @@
-const VERSION = '20221111-R'
+const VERSION = '20221111-T'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
@@ -306,6 +306,7 @@ function timeTask() {
             console.log('进行模拟滑动')
             swipe_flag = 1
             swipe(device.width / 2, device.height - 200, device.width / 2 + 20, device.height - 500, 500)
+            c++
         }
 
         // 弹窗处理
