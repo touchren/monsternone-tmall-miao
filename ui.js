@@ -1,6 +1,6 @@
 "ui";
 
-const VERSION = '20221111-T'
+const VERSION = '20221111-U'
 
 const deviceWidth = device.width
 const deviceHeight = device.height
@@ -59,7 +59,8 @@ ui.layout(
                             <card w="{{parseInt(deviceWidth*0.95) + 'px'}}" h="auto"
                                 margin="5" cardCornerRadius="15dp" cardBackgroundColor="#FFC0BE" gravity="left">
                                 <vertical gravity="center_vertical">
-                                    <text gravity="center" color="#E8110F" text="双十一必领无门槛红包！！" size="30dp" />
+                                    <text gravity="center" color="#E8110F" text="双十一必领无门槛红包第二轮！！" size="30dp" />
+                                    <text gravity="center" color="#E8110F" text="11.4首发，机率更大！！" size="30dp" />
                                     <text gravity="center" color="#E8110F" text="↓↓↓↓↓↓点击下方色块领取↓↓↓↓↓↓" />
                                     <horizontal gravity="center">
                                         <card w="{{parseInt(deviceWidth*0.45) + 'px'}}" h="{{parseInt(deviceHeight*0.18) + 'px'}}"
@@ -111,7 +112,7 @@ ui.layout(
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb3">
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/tb3.jpg" />
-                                                <text gravity="center" textSize="16dp">官方小编推荐现货内购清单</text>
+                                                <text gravity="center" textSize="16dp">天猫超市买前先领券，优惠超轻松</text>
                                             </vertical>
                                         </card>
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb4">
@@ -123,7 +124,7 @@ ui.layout(
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb5">
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/tb5.jpg" />
-                                                <text gravity="center" textSize="16dp">聚划算抢先购</text>
+                                                <text gravity="center" textSize="16dp">双11天天开大奖（5日开始）</text>
                                             </vertical>
                                         </card>
                                     </vertical>
@@ -314,14 +315,14 @@ ui.jdHb1.click(openJdHb)
 
 ui.tb1.click(function () { openTbUrl('https://s.m.taobao.com/h5?q=惊喜不断来dddd') })
 ui.tb2.click(function () { openTbUrl('https://s.click.taobao.com/UOAHjRu') })
-ui.tb3.click(function () { openTbUrl('https://s.click.taobao.com/gdnHjRu') })
+ui.tb3.click(function () { openTbUrl('https://s.click.taobao.com/ZnccXRu') })
 ui.tb4.click(function () { openTbUrl('https://s.click.taobao.com/twoIjRu') })
-ui.tb5.click(function () { openTbUrl('https://s.click.taobao.com/B8OFjRu') })
-ui.jd1.click(function () { openJdUrl('https://u.jd.com/xCNYL2M') })
-ui.jd2.click(function () { openJdUrl('https://u.jd.com/xIllOGg') })
-ui.jd3.click(function () { openJdUrl('https://u.jd.com/xLll0hJ') })
-ui.jd4.click(function () { openJdUrl('https://u.jd.com/xMl7526') })
-ui.jd5.click(function () { openJdUrl('https://u.jd.com/kCBuyG7') })
+ui.tb5.click(function () { openTbUrl('https://s.click.taobao.com/l0XeXRu') })
+ui.jd1.click(function () { openJdUrl('https://u.jd.com/xKR9uPx') })
+ui.jd2.click(function () { openJdUrl('https://u.jd.com/xw7t6WL') })
+ui.jd3.click(function () { openJdUrl('https://u.jd.com/xLR5IbX') })
+ui.jd4.click(function () { openJdUrl('https://u.jd.com/xLReHnX') })
+ui.jd5.click(function () { openJdUrl('https://u.jd.com/xIRozHq') })
 
 ui.startTask.click(function () {
     // alert('淘宝活动尚未开始', '敬请关注脚本更新')
@@ -342,8 +343,8 @@ ui.startJDTask.click(function () {
 
 function openJdHb() {
     // const url = 'https://u.jd.com/kd4SkwG'
-    const url = 'https://so.m.jd.com/ware/search.action?keyword=购物季补贴555'
-    const text = '88￥BCE4EDlejxMOPciH%'
+    const url = 'https://so.m.jd.com/ware/search.action?keyword=粉丝福利886'
+    const text = '88￥S57hxAmHJ5d76c1u￥'
     dialogs.build({
         title: "是否使用复制京口令领取？",
         content: "实测京口令领取红包更大，如果app未自动弹出口令请使用默认方式",

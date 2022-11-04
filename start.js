@@ -1,4 +1,4 @@
-const VERSION = '20221111-T'
+const VERSION = '20221111-U'
 
 if (!auto.service) {
     toast('无障碍服务未启动！退出！')
@@ -195,6 +195,10 @@ try {
             if (textContains('互动奖励').exists() ||
                 descContains('互动奖励').exists()) {
                 console.log('跳过互动任务')
+                break
+            }
+            if (text('手机淘宝触屏版').exists()) {
+                console.log('页面未加载，返回')
                 break
             }
             if (text('宝贝口袋').exists()) {
