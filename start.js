@@ -208,9 +208,9 @@ try {
                 console.log('关闭直播购物车')
                 click(x, y - 100)
             }
-            if (finish_c > 100 && finish_c % 10 == 0) {
+            if (finish_c > 100 && finish_c % 50 == 0) {
                 console.log('滑动防止页面卡顿')
-                swipe(device.width / 2 + 20, device.height - 500, device.width / 2, device.height - 200, 500)
+                swipe( device.width / 2, device.height - 400, device.width / 2 + 20, device.height - 500, 500)
                 finish_c = finish_c + 5
             }
             sleep(100)
