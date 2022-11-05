@@ -152,7 +152,7 @@ try {
                     sleep(8000)
                     return findTask()
                 }
-                if (!(taskName.match(/淘金币|提醒|开通|续费|乐园|话费|斗地主|消消乐|流浪猫|开88|扔喵果|占领|邀请|登录|组队|参与|施肥|浇水|特价版|小鸡|消除|穿搭|森林|点淘|人生|我的淘宝|庄园|支付宝|点击人物/) || content.match(/小互动/))) {
+                if (!(taskName.match(/淘金币|提醒|开通|续费|乐园|话费|斗地主|消消乐|流浪猫|开88|扔喵果|占领|邀请|登录|组队|参与|施肥|浇水|特价版|小鸡|消除|穿搭|森林|点淘|人生|我的淘宝|庄园|支付宝|点击人物|月卡/) || content.match(/小互动/))) {
                     return [taskName, jumpButtons[i]]
                 }
             }
@@ -210,7 +210,7 @@ try {
             }
             if (finish_c > 100 && finish_c % 10 == 0) {
                 console.log('滑动防止页面卡顿')
-                swipe(device.width / 2, device.height - 200, device.width / 2 + 20, device.height - 500, 500)
+                swipe(device.width / 2 + 20, device.height - 500, device.width / 2, device.height - 200, 500)
                 finish_c = finish_c + 5
             }
             sleep(100)
