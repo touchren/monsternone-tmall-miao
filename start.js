@@ -179,7 +179,7 @@ try {
                 swipe(device.width / 2, device.height - 200, device.width / 2 + 20, device.height - 500, 2000)
                 finish_c = finish_c + 10
             }
-            let finish_reg = /.*任务.*?完成[\s\S]*?|.*失败.*|.*上限.*|.*开小差.*|.*喵果已发放[\s\S]*|.*下单可获得[\s\S]*/
+            let finish_reg = /.*任务.*?完成[\s\S]*?|.*失败.*|.*上限.*|.*开小差.*|.*喵果已发放[\s\S]*|.*下单可获得[\s\S]*|任务已经/
             if (textMatches(finish_reg).exists() || descMatches(finish_reg).exists()) { // 等待已完成出现，有可能失败
                 break
             }
@@ -207,6 +207,12 @@ try {
                 let y = cart.bounds().top
                 console.log('关闭直播购物车')
                 click(x, y - 100)
+            }
+            if (text('立即关注得喵果').exists()) {
+                console.log('关注直播间任务，点击关注按钮')
+                text('立即关注得喵果').click()
+                sleep(1000)
+                break
             }
             if (finish_c > 100 && finish_c % 50 == 0) {
                 console.log('滑动防止页面卡顿')
