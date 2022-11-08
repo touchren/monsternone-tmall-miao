@@ -1,6 +1,6 @@
 "ui";
 
-const VERSION = '20221111-U'
+const VERSION = '20221111-V'
 
 const deviceWidth = device.width
 const deviceHeight = device.height
@@ -103,6 +103,12 @@ ui.layout(
                                                 <text gravity="center" textSize="16dp">淘宝主会场</text>
                                             </vertical>
                                         </card>
+                                        <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb5">
+                                            <vertical>
+                                                <img layout_gravity="center" src="file://res/activity/tb5.jpg" />
+                                                <text gravity="center" textSize="16dp">双11天天开大奖(也有红包)</text>
+                                            </vertical>
+                                        </card>
                                         <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb2">
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/tb2.jpg" />
@@ -119,12 +125,6 @@ ui.layout(
                                             <vertical>
                                                 <img layout_gravity="center" src="file://res/activity/tb4.jpg" />
                                                 <text gravity="center" textSize="16dp">千万神券</text>
-                                            </vertical>
-                                        </card>
-                                        <card marginBottom="10dp" h="auto" w="*" cardBackgroundColor="#f5f5f5" id="tb5">
-                                            <vertical>
-                                                <img layout_gravity="center" src="file://res/activity/tb5.jpg" />
-                                                <text gravity="center" textSize="16dp">双11天天开大奖（5日开始）</text>
                                             </vertical>
                                         </card>
                                     </vertical>
